@@ -2,26 +2,40 @@
 
 ## Building the web app
 
-First install dependencies:  
-```yarn```
+First install dependencies:
+
+```
+yarn
+```
 
 ### Dev Build
 
-```yarn dev```
+```
+yarn dev
+```
 
 ### Production Build
 
-```yarn build```
+```
+yarn build
+```
 
 ## Building the desktop app
 
-First install dependencies:  
-```yarn```
+First install dependencies:
+
+```
+yarn
+```
 
 ### Dev Build
 
-```yarn tauri dev```
+```
+yarn tauri dev
+```
 
 ### Production Build
 
-```yarn tauri build```
+```
+yarn tauri build
+```
