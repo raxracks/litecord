@@ -9,7 +9,9 @@ import Separator from "./components/Separator.vue";
 import PinnedServers from "./components/PinnedServers.vue";
 import Server from "./components/Server.vue";
 import ChannelList from "./components/ChannelList.vue";
-const gateway = new DiscordGateway("MTQxMDEyNjY1NTA0ODkwODgw.GYvmmd.9jEzww5vPXe0re_ypp-H7j_v4CyfuDkbDOwhic");
+const token = localStorage.getItem("token") ?? prompt("Enter your token") ?? "";
+localStorage.setItem("token", token);
+const gateway = new DiscordGateway(token);
 
 gateway.on("READY", (readyData) => {
   console.log("Connected to Discord");
