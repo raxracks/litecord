@@ -22,7 +22,7 @@ onUpdated(() => {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    overflow: scroll;
+    overflow-y: auto;
     padding-bottom: 10px;
 }
 </style>
