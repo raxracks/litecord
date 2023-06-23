@@ -9,7 +9,7 @@ defineProps<{ guild: any }>();
 </script>
 
 <template>
-    <div @click="() => currentGuild = guild" @contextmenu="(event) => {
+    <div @click="currentGuild = guild" @contextmenu="(event) => {
         event.preventDefault();
         if (pinned.has(guild)) pinned.delete(guild);
         else pinned.add(guild);

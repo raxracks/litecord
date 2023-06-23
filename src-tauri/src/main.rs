@@ -6,7 +6,7 @@ use tauri::{
 };
 
 fn main() {
-    let litecord = CustomMenuItem::new("litecord".to_string(), "Litecord").disabled();
+    let litecord = CustomMenuItem::new("litecord".to_string(), "Litecord");
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let tray_menu = SystemTrayMenu::new()
         .add_item(litecord)
@@ -25,6 +25,10 @@ fn main() {
                 window.show().unwrap();
             }
             SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
+                "litecord" => {
+                    let window = app.get_window("main").unwrap();
+                    window.show().unwrap();
+                }
                 "quit" => {
                     std::process::exit(0);
                 }

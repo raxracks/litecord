@@ -15,6 +15,7 @@ import Channel from './Channel.vue';
     display: flex;
     flex-direction: column;
     width: 280px;
+    min-width: 280px;
     height: 100%;
     overflow-y: scroll;
     -ms-overflow-style: none;

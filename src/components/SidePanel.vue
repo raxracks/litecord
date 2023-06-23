@@ -9,6 +9,7 @@
     display: flex;
     height: 100%;
     width: fit-content;
+    min-width: fit-content;
     overflow-y: scroll;
     flex-direction: column;
     -ms-overflow-style: none;

@@ -1,11 +1,24 @@
 <script setup lang="ts">
-import { currentChannel } from '../state';
+import { currentChannel, messages, token } from '../state';
 
-defineProps<{ channel: any }>();
+const props = defineProps<{ channel: any }>();
+
+function changeChannel() {
+    currentChannel.value = props.channel;
+    fetch(`https://discord.com/api/v9/channels/${props.channel.id}/messages?limit=50`, {
+        headers: {
+            authorization: token.value,
+        }
+    }).then(response => {
+        response.json().then(json => {
+            messages.value = json.reverse();
+        });
+    })
+}
 </script>
 
 <template>
-    <div :class="{ channel: true, selected: currentChannel === channel }" @click="() => currentChannel = channel">
+    <div :class="{ channel: true, selected: currentChannel === channel }" @click="changeChannel">
         # {{ channel.name }}
     </div>
 </template>
@@ -19,6 +32,10 @@ defineProps<{ channel: any }>();
     width: 100%;
     box-sizing: border-box;
     overflow-x: clip;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .selected {
