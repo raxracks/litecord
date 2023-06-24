@@ -2,9 +2,20 @@
 import Message from './Message.vue';
 import { messages } from "../state";
 import { onUpdated } from 'vue';
+import { onBeforeUpdate } from 'vue';
+let scrollNextUpdate = true;
+
+onBeforeUpdate(() => {
+    let scrollHeight: any = document.getElementById("message-list")?.scrollHeight;
+    let offsetHeight: any = document.getElementById("message-list")?.offsetHeight
+    scrollNextUpdate = document.getElementById("message-list")?.scrollTop === (scrollHeight - offsetHeight);
+});
 
 onUpdated(() => {
-    document.getElementById("message-list")?.scrollBy(0, 100000);
+    if (scrollNextUpdate) {
+        document.getElementById("message-list")?.scrollBy(0, 100000);
+        scrollNextUpdate = true;
+    }
 });
 </script>
 
